@@ -5,16 +5,32 @@ Pitch. It is intended for maintainers and reviewers.
 
 ## Maintenance boundaries
 
-The repository maintenance work changes build infrastructure, documentation and
-localization. It does not split the main plugin into modules or alter speech
-processing. The only main-plugin change makes an existing diagnostic status
-suffix translatable. SAPI4/SAPI5 host wrapper source and bundled DLLs are unchanged.
+The global plugin is a Python package at `addon/globalPlugins/globalSonicPitch/`.
+Its `GlobalPlugin` class remains in that package's `__init__.py`, preserving the
+module/class identity used by NVDA input gesture assignments. Speech processing,
+configuration keys, script names, hook attributes and default values are retained.
+SAPI4/SAPI5 host wrapper source and bundled DLLs are unchanged.
 
-The main plugin combines configuration, Sonic loading and processing, synth
-setting injection, dialog integration and gesture handling. SAPI host wrappers
-are already separate modules because they run in a different process. Any later
-modularization of the main plugin is a separate runtime change requiring the
-regression tests in `../TESTING.md`.
+| Module | Responsibility |
+| --- | --- |
+| `__init__.py` | NVDA entry point, lifecycle and gesture methods |
+| `_nvda.py` | Original imports, optional NVDA interfaces and shared gettext lookup |
+| `state.py` | One instance of constants, caches, locks and runtime flags |
+| `configuration.py` | Configuration, pitch mapping and saved voice values |
+| `synths.py` | Synth identity, voice/variant properties, dynamic settings and synth switching |
+| `host.py` | Main-process control of the existing 32-bit host wrappers |
+| `dialogs.py` | Voice dialog transactions, refresh guards and registry cleanup |
+| `native.py` | Sonic loading, native stream lifetime and PCM processor |
+| `audio.py` | WavePlayer hooks, buffering and completion callbacks |
+| `settings_panel.py` | Add-on settings panel and support action |
+
+Cross-component calls use module references, rather than copied function or state
+bindings. Mutable and reassigned runtime values are owned by `state.py`; this
+includes the original WavePlayer references and settings dialog transaction maps.
+Imports retain the existing dependencies between responsibilities. Hook registration
+is performed by `GlobalPlugin` after imports finish, not during component imports.
+SAPI wrappers still run in their separate host process. The two resource-path
+helpers account for the package's extra directory level and find the same files.
 
 The changelog documents the reasons for existing stability workarounds. Preserve:
 
@@ -27,7 +43,8 @@ The changelog documents the reasons for existing stability workarounds. Preserve
 
 These address different native lifetime, threading and NVDA integration problems.
 Moving functions to separate modules alone does not demonstrate that a workaround
-can safely be removed. Build checks do not execute these runtime paths.
+can safely be removed. The regression tests use explicit NVDA/audio doubles;
+actual Windows/NVDA playback tests remain necessary before release.
 
 ## Design Goal
 

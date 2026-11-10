@@ -59,7 +59,8 @@ source of add-on identity, version, description, compatibility and package rules
 
 ## Repository structure
 
-- `addon/globalPlugins/globalSonicPitch.py`: existing main global plugin.
+- `addon/globalPlugins/globalSonicPitch/`: modular global plugin; `__init__.py`
+  retains the NVDA entry point. See the module map in [technical notes](technical-notes.md).
 - `addon/sapi32HostDrivers/`: existing SAPI4/SAPI5 host wrappers.
 - `addon/globalPlugins/sonicPitchNative/`: unchanged native DLLs and their provenance.
 - `addon/doc/`: full user manuals in English, Polish and Slovak.
@@ -87,7 +88,8 @@ the template's automatic release-publishing workflow are not enabled.
 ## GitHub Actions
 
 The workflow builds on Ubuntu with Python 3.13 after a push, pull request or
-manual invocation. It validates translations, builds the package and uploads
+manual invocation. It validates translations, runs the NVDA-double regression
+tests with `uv run --locked python -m unittest discover -s tests -v`, builds the package and uploads
 the package, checksum and generated POT as review artifacts. It has read-only
 repository permissions and does not create releases or update the Add-on Store.
 Actions are pinned to commit revisions; dependency updates should be reviewed.

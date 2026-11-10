@@ -99,12 +99,18 @@ def package_checks(path: Path, build: dict, catalogs: dict) -> None:
         names = bundle.namelist()
         require(len(names) == len(set(names)), "Duplicate archive entries")
         expected = {
-            "manifest.ini", "installTasks.py", "globalPlugins/globalSonicPitch.py",
+            "manifest.ini", "installTasks.py",
             "sapi32HostDrivers/__init__.py", "sapi32HostDrivers/sapi4.py", "sapi32HostDrivers/sapi5.py",
             "globalPlugins/sonicPitchNative/sonic32.dll", "globalPlugins/sonicPitchNative/sonic64.dll",
             "globalPlugins/sonicPitchNative/LICENSE-Sonic.txt", "COPYING.txt",
             "THIRD_PARTY_NOTICES.txt", "doc/style.css",
         }
+        components = {
+            "__init__", "_nvda", "state", "configuration", "synths", "host",
+            "dialogs", "native", "audio", "settings_panel",
+        }
+        expected.update(f"globalPlugins/globalSonicPitch/{name}.py" for name in components)
+        require("globalPlugins/globalSonicPitch.py" not in names, "Legacy monolithic plugin in package")
         for lang in ("en", *catalogs):
             expected.add(f"doc/{lang}/readme.html")
         for lang in catalogs:

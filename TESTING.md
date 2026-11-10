@@ -17,6 +17,20 @@ The checks cover Python syntax, source/POT/PO consistency, translated
 placeholders, compiled catalogs, generated manifest descriptions, package paths,
 required DLLs and licenses, and basic HTML heading/table structure.
 
+## Runtime regression tests with doubles
+
+Run `uv run --locked python -m unittest discover -s tests -v`.
+
+These tests import the actual plugin against small NVDA, dialog and audio doubles.
+They cover plugin/gesture identity, resource paths, hook restoration and reimport, per-voice and
+per-variant values, dialog preview commit/discard, dynamic settings, synth wrapper
+signatures, remote host parameter order/cache reset, short-block callbacks,
+deferred pitch changes, stop behavior, unsupported audio bypass, processing failure
+fallback, soundWave's temporary factory and destroyed-panel refresh handling.
+
+The doubles do not synthesize speech, load Sonic DLLs, use COM or create real wx
+windows. The Windows/NVDA matrix below remains a separate requirement.
+
 Check build integration after changing build tools:
 
 - Build from a clean checkout without pre-generated HTML, MO or manifests.

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'globalSonicPitch' '1.1.8'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2026-11-10 15:11+0100\n"
+"POT-Creation-Date: 2026-11-10 16:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,147 +33,148 @@ msgstr ""
 
 #. Translators: Error shown when the support page cannot be opened automatically.
 #. Translators: Spoken error when the support page cannot be opened automatically.
-#: addon\installTasks.py:53 addon\globalPlugins\globalSonicPitch.py:235
+#: addon\installTasks.py:53
+#: addon\globalPlugins\globalSonicPitch\settings_panel.py:32
 #, python-brace-format
 msgid "Cannot open support page. Open this address manually: {url}"
 msgstr ""
 
-#. Translators: Spoken message after opening the support page.
-#: addon\globalPlugins\globalSonicPitch.py:231
-msgid "Opening support page"
-msgstr ""
-
-#. Translators: Fallback synthesizer name used in spoken status messages.
-#: addon\globalPlugins\globalSonicPitch.py:308
-msgid "current synth"
-msgstr ""
-
 #. Translators: Name of the add-on pitch setting in NVDA Voice settings.
 #. Translators: Display name of the add-on pitch setting in the synth settings ring.
 #. Translators: Name of the add-on pitch setting in NVDA Voice settings.
 #. Translators: Display name of the add-on pitch setting in the synth settings ring.
-#: addon\globalPlugins\globalSonicPitch.py:1641
-#: addon\globalPlugins\globalSonicPitch.py:1650
-#: addon\globalPlugins\globalSonicPitch.py:1658
-#: addon\globalPlugins\globalSonicPitch.py:1667
 #: addon\sapi32HostDrivers\sapi4.py:192 addon\sapi32HostDrivers\sapi4.py:200
 #: addon\sapi32HostDrivers\sapi4.py:206 addon\sapi32HostDrivers\sapi4.py:214
 #: addon\sapi32HostDrivers\sapi5.py:164 addon\sapi32HostDrivers\sapi5.py:172
 #: addon\sapi32HostDrivers\sapi5.py:178 addon\sapi32HostDrivers\sapi5.py:186
+#: addon\globalPlugins\globalSonicPitch\synths.py:179
+#: addon\globalPlugins\globalSonicPitch\synths.py:188
+#: addon\globalPlugins\globalSonicPitch\synths.py:196
+#: addon\globalPlugins\globalSonicPitch\synths.py:205
 msgid "Sonic pitch"
+msgstr ""
+
+#. Translators: Spoken message after opening the support page.
+#: addon\globalPlugins\globalSonicPitch\settings_panel.py:28
+msgid "Opening support page"
 msgstr ""
 
 #. Translators: Title of the add-on settings panel in NVDA preferences.
 #. Translators: Input Gestures category for this add-on.
 #. Translators: Add-on name. Keep the product name unchanged.
-#: addon\globalPlugins\globalSonicPitch.py:2765
-#: addon\globalPlugins\globalSonicPitch.py:2828 buildVars.py:9
+#: addon\globalPlugins\globalSonicPitch\settings_panel.py:37
+#: addon\globalPlugins\globalSonicPitch\__init__.py:24 buildVars.py:9
 msgid "Global Sonic Pitch"
 msgstr ""
 
 #. Translators: Checkbox enabling or disabling Sonic pitch processing.
-#: addon\globalPlugins\globalSonicPitch.py:2772
+#: addon\globalPlugins\globalSonicPitch\settings_panel.py:44
 msgid "Enable global Sonic pitch"
 msgstr ""
 
 #. Translators: Checkbox increasing the Sonic pitch control range from 6 to 20 semitones.
-#: addon\globalPlugins\globalSonicPitch.py:2777
+#: addon\globalPlugins\globalSonicPitch\settings_panel.py:49
 msgid "Increase Sonic pitch range to 20 semitones"
 msgstr ""
 
 #. Translators: Checkbox enabling Sonic's better-quality processing mode.
-#: addon\globalPlugins\globalSonicPitch.py:2782
+#: addon\globalPlugins\globalSonicPitch\settings_panel.py:54
 msgid "Use better-quality Sonic processing"
 msgstr ""
 
-#: addon\globalPlugins\globalSonicPitch.py:2790
+#: addon\globalPlugins\globalSonicPitch\settings_panel.py:62
 msgid ""
 "Better quality may improve Sonic pitch processing for some voices, but can "
 "use more CPU. It does not change the pitch range."
 msgstr ""
 
 #. Translators: Checkbox enabling debug log messages for this add-on.
-#: addon\globalPlugins\globalSonicPitch.py:2797
+#: addon\globalPlugins\globalSonicPitch\settings_panel.py:69
 msgid "Enable debug logging"
 msgstr ""
 
 #. Translators: Button opening the author's support page.
-#: addon\globalPlugins\globalSonicPitch.py:2802
+#: addon\globalPlugins\globalSonicPitch\settings_panel.py:74
 msgid "Support the author"
 msgstr ""
 
+#. Translators: Fallback synthesizer name used in spoken status messages.
+#: addon\globalPlugins\globalSonicPitch\synths.py:44
+msgid "current synth"
+msgstr ""
+
 #. Translators: Input gesture description for toggling the add-on.
-#: addon\globalPlugins\globalSonicPitch.py:2853
+#: addon\globalPlugins\globalSonicPitch\__init__.py:49
 msgid "Toggle global Sonic pitch"
 msgstr ""
 
 #. Translators: Spoken status when global Sonic pitch has been enabled or disabled.
-#: addon\globalPlugins\globalSonicPitch.py:2862
+#: addon\globalPlugins\globalSonicPitch\__init__.py:58
 msgid "Global Sonic pitch on"
 msgstr ""
 
 #. Translators: Spoken status when global Sonic pitch is disabled.
-#: addon\globalPlugins\globalSonicPitch.py:2862
-#: addon\globalPlugins\globalSonicPitch.py:2887
+#: addon\globalPlugins\globalSonicPitch\__init__.py:58
+#: addon\globalPlugins\globalSonicPitch\__init__.py:83
 msgid "Global Sonic pitch off"
 msgstr ""
 
 #. Translators: Input gesture description for reporting the add-on status.
-#: addon\globalPlugins\globalSonicPitch.py:2866
+#: addon\globalPlugins\globalSonicPitch\__init__.py:62
 msgid "Report global Sonic pitch status"
 msgstr ""
 
 #. Translators: Spoken status. {synth} is a synthesizer name, {pitch} is a number from 0 to 100.
-#: addon\globalPlugins\globalSonicPitch.py:2876
+#: addon\globalPlugins\globalSonicPitch\__init__.py:72
 #, python-brace-format
 msgid "Global Sonic pitch on, {synth} Sonic pitch {pitch}"
 msgstr ""
 
 #. Translators: Spoken status when the current synth cannot be processed by Sonic. {synth} is a synth name.
-#: addon\globalPlugins\globalSonicPitch.py:2882
+#: addon\globalPlugins\globalSonicPitch\__init__.py:78
 #, python-brace-format
 msgid "Global Sonic pitch on, Sonic pitch is unavailable for {synth}"
 msgstr ""
 
 #. Translators: Diagnostic status suffix. {reason} is a technical error description.
-#: addon\globalPlugins\globalSonicPitch.py:2890
+#: addon\globalPlugins\globalSonicPitch\__init__.py:86
 #, python-brace-format
 msgid "Sonic unavailable: {reason}"
 msgstr ""
 
 #. Translators: Input gesture description for opening the author's support page.
-#: addon\globalPlugins\globalSonicPitch.py:2896
+#: addon\globalPlugins\globalSonicPitch\__init__.py:92
 msgid "Open support page"
 msgstr ""
 
 #. Translators: Input gesture description for increasing Sonic pitch for the current synth.
-#: addon\globalPlugins\globalSonicPitch.py:2904
+#: addon\globalPlugins\globalSonicPitch\__init__.py:100
 msgid "Increase Sonic pitch for the current synthesizer"
 msgstr ""
 
 #. Translators: Spoken message when Sonic pitch is unavailable. {synth} is a synth name.
-#: addon\globalPlugins\globalSonicPitch.py:2913
-#: addon\globalPlugins\globalSonicPitch.py:2929
-#: addon\globalPlugins\globalSonicPitch.py:2945
+#: addon\globalPlugins\globalSonicPitch\__init__.py:109
+#: addon\globalPlugins\globalSonicPitch\__init__.py:125
+#: addon\globalPlugins\globalSonicPitch\__init__.py:141
 #, python-brace-format
 msgid "Sonic pitch is unavailable for {synth}"
 msgstr ""
 
 #. Translators: Spoken message after changing Sonic pitch. {pitch} is a number from 0 to 100.
-#: addon\globalPlugins\globalSonicPitch.py:2916
-#: addon\globalPlugins\globalSonicPitch.py:2932
-#: addon\globalPlugins\globalSonicPitch.py:2948
+#: addon\globalPlugins\globalSonicPitch\__init__.py:112
+#: addon\globalPlugins\globalSonicPitch\__init__.py:128
+#: addon\globalPlugins\globalSonicPitch\__init__.py:144
 #, python-brace-format
 msgid "Sonic pitch {pitch}"
 msgstr ""
 
 #. Translators: Input gesture description for decreasing Sonic pitch for the current synth.
-#: addon\globalPlugins\globalSonicPitch.py:2920
+#: addon\globalPlugins\globalSonicPitch\__init__.py:116
 msgid "Decrease Sonic pitch for the current synthesizer"
 msgstr ""
 
 #. Translators: Input gesture description for resetting Sonic pitch for the current synth.
-#: addon\globalPlugins\globalSonicPitch.py:2936
+#: addon\globalPlugins\globalSonicPitch\__init__.py:132
 msgid "Reset Sonic pitch for the current synthesizer"
 msgstr ""
 

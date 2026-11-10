@@ -33,6 +33,8 @@ jobs:
         run: uv run --locked scons pot
       - name: Validate sources and translations
         run: uv run --locked python tools/check_project.py
+      - name: Test runtime integration with NVDA doubles
+        run: uv run --locked python -m unittest discover -s tests -v
       - name: Build add-on
         run: uv run --locked scons
       - name: Validate package and write checksum

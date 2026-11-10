@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Splits the main global plugin into modules for configuration, synth integration,
+  dialogs, Sonic streams, audio hooks and the settings panel, with one shared state.
+  Retains the NVDA plugin/gesture identity, existing processing behavior and all
+  stability workarounds. SAPI host wrappers and native binaries are unchanged.
+- Adds runtime regression tests with NVDA/audio doubles to local and CI checks.
+
 - Introduces a build based on NVDA Add-on Template with locked Python tooling,
   automatic Markdown-to-HTML help, PO-to-MO compilation and manifest generation.
 - Rewrites English, Polish and Slovak overviews and manuals around setup and
