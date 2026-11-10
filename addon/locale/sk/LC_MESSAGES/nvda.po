@@ -1,88 +1,175 @@
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Global Sonic Pitch 1.1\n"
+"Project-Id-Version: Global Sonic Pitch 1.1.8\n"
 "POT-Creation-Date: 2026-07-14 00:00+0200\n"
-"PO-Revision-Date: 2026-07-14 00:00+0200\n"
-"Last-Translator: Kazimierz Parzych\n"
+"PO-Revision-Date: 2026-11-10 15:01+0100\n"
+"Last-Translator: Kazimierz Parzych, DJ Graco\n"
 "Language-Team: Slovak\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
+#. Translators: Spoken message after opening the support page.
+#: addon/globalPlugins/globalSonicPitch.py:231
 msgid "Opening support page"
 msgstr "Otvára sa stránka podpory"
 
+#. Translators: Error shown when the support page cannot be opened
+#. automatically.
+#. Translators: Spoken error when the support page cannot be opened
+#. automatically.
+#: addon/installTasks.py:53 addon/globalPlugins/globalSonicPitch.py:235
+#, python-brace-format
 msgid "Cannot open support page. Open this address manually: {url}"
-msgstr "Stránku podpory sa nepodarilo otvoriť. Otvorte túto adresu ručne: {url}"
+msgstr ""
+"Stránku podpory sa nepodarilo otvoriť. Otvorte túto adresu ručne: {url}"
 
+#. Translators: Fallback synthesizer name used in spoken status messages.
+#: addon/globalPlugins/globalSonicPitch.py:308
 msgid "current synth"
 msgstr "aktuálny syntetizér"
 
+#. Translators: Name of the add-on pitch setting in NVDA Voice settings.
+#. Translators: Display name of the add-on pitch setting in the synth settings
+#. ring.
+#. Translators: Name of the add-on pitch setting in NVDA Voice settings.
+#. Translators: Display name of the add-on pitch setting in the synth settings
+#. ring.
+#: addon/sapi32HostDrivers/sapi4.py:192 addon/sapi32HostDrivers/sapi4.py:200
+#: addon/sapi32HostDrivers/sapi4.py:206 addon/sapi32HostDrivers/sapi4.py:214
+#: addon/sapi32HostDrivers/sapi5.py:164 addon/sapi32HostDrivers/sapi5.py:172
+#: addon/sapi32HostDrivers/sapi5.py:178 addon/sapi32HostDrivers/sapi5.py:186
+#: addon/globalPlugins/globalSonicPitch.py:1641
+#: addon/globalPlugins/globalSonicPitch.py:1650
+#: addon/globalPlugins/globalSonicPitch.py:1658
+#: addon/globalPlugins/globalSonicPitch.py:1667
 msgid "Sonic pitch"
 msgstr "Sonic pitch"
 
+#. Translators: Title of the add-on settings panel in NVDA preferences.
+#. Translators: Input Gestures category for this add-on.
+#. Translators: Add-on name. Keep the product name unchanged.
+#: addon/globalPlugins/globalSonicPitch.py:2765
+#: addon/globalPlugins/globalSonicPitch.py:2828 buildVars.py:9
 msgid "Global Sonic Pitch"
 msgstr "Global Sonic Pitch"
 
+#. Translators: Checkbox enabling or disabling Sonic pitch processing.
+#: addon/globalPlugins/globalSonicPitch.py:2772
 msgid "Enable global Sonic pitch"
 msgstr "Povoliť globálny Sonic pitch"
 
+#. Translators: Checkbox increasing the Sonic pitch control range from 6 to 20
+#. semitones.
+#: addon/globalPlugins/globalSonicPitch.py:2777
 msgid "Increase Sonic pitch range to 20 semitones"
 msgstr "Zvýšiť rozsah Sonic pitch na 20 poltónov"
 
+#. Translators: Checkbox enabling Sonic's better-quality processing mode.
+#: addon/globalPlugins/globalSonicPitch.py:2782
 msgid "Use better-quality Sonic processing"
 msgstr "Použiť kvalitnejšie spracovanie Sonic"
 
+#: addon/globalPlugins/globalSonicPitch.py:2790
 msgid ""
-"Better quality may improve Sonic pitch processing for some voices, but can use more CPU. "
-"It does not change the pitch range."
+"Better quality may improve Sonic pitch processing for some voices, but can "
+"use more CPU. It does not change the pitch range."
 msgstr ""
-"Kvalitnejšie spracovanie môže zlepšiť úpravu výšky Sonic pri niektorých hlasoch, ale môže použiť viac CPU. "
-"Nemení rozsah výšky."
+"Kvalitnejšie spracovanie môže zlepšiť úpravu výšky Sonic pri niektorých "
+"hlasoch, ale môže použiť viac CPU. Nemení rozsah výšky."
 
+#. Translators: Checkbox enabling debug log messages for this add-on.
+#: addon/globalPlugins/globalSonicPitch.py:2797
 msgid "Enable debug logging"
 msgstr "Povoliť ladiace záznamy"
 
+#. Translators: Button opening the author's support page.
+#: addon/globalPlugins/globalSonicPitch.py:2802
 msgid "Support the author"
 msgstr "Podporiť autora"
 
+#. Translators: Input gesture description for toggling the add-on.
+#: addon/globalPlugins/globalSonicPitch.py:2853
 msgid "Toggle global Sonic pitch"
 msgstr "Prepnúť globálny Sonic pitch"
 
+#. Translators: Spoken status when global Sonic pitch has been enabled or
+#. disabled.
+#: addon/globalPlugins/globalSonicPitch.py:2862
 msgid "Global Sonic pitch on"
 msgstr "Globálny Sonic pitch zapnutý"
 
+#. Translators: Spoken status when global Sonic pitch is disabled.
+#: addon/globalPlugins/globalSonicPitch.py:2862
+#: addon/globalPlugins/globalSonicPitch.py:2887
 msgid "Global Sonic pitch off"
 msgstr "Globálny Sonic pitch vypnutý"
 
+#. Translators: Input gesture description for reporting the add-on status.
+#: addon/globalPlugins/globalSonicPitch.py:2866
 msgid "Report global Sonic pitch status"
 msgstr "Oznámiť stav globálneho Sonic pitch"
 
+#. Translators: Spoken status. {synth} is a synthesizer name, {pitch} is a
+#. number from 0 to 100.
+#: addon/globalPlugins/globalSonicPitch.py:2876
+#, python-brace-format
 msgid "Global Sonic pitch on, {synth} Sonic pitch {pitch}"
 msgstr "Globálny Sonic pitch zapnutý, {synth}, Sonic pitch {pitch}"
 
+#. Translators: Spoken status when the current synth cannot be processed by
+#. Sonic. {synth} is a synth name.
+#: addon/globalPlugins/globalSonicPitch.py:2882
+#, python-brace-format
 msgid "Global Sonic pitch on, Sonic pitch is unavailable for {synth}"
 msgstr "Globálny Sonic pitch zapnutý, Sonic pitch nie je dostupný pre {synth}"
 
+#. Translators: Input gesture description for opening the author's support
+#. page.
+#: addon/globalPlugins/globalSonicPitch.py:2896
 msgid "Open support page"
 msgstr "Otvoriť stránku podpory"
 
+#. Translators: Input gesture description for increasing Sonic pitch for the
+#. current synth.
+#: addon/globalPlugins/globalSonicPitch.py:2904
 msgid "Increase Sonic pitch for the current synthesizer"
 msgstr "Zvýšiť Sonic pitch pre aktuálny syntetizér"
 
+#. Translators: Spoken message when Sonic pitch is unavailable. {synth} is a
+#. synth name.
+#: addon/globalPlugins/globalSonicPitch.py:2913
+#: addon/globalPlugins/globalSonicPitch.py:2929
+#: addon/globalPlugins/globalSonicPitch.py:2945
+#, python-brace-format
 msgid "Sonic pitch is unavailable for {synth}"
 msgstr "Sonic pitch nie je dostupný pre {synth}"
 
+#. Translators: Spoken message after changing Sonic pitch. {pitch} is a number
+#. from 0 to 100.
+#: addon/globalPlugins/globalSonicPitch.py:2916
+#: addon/globalPlugins/globalSonicPitch.py:2932
+#: addon/globalPlugins/globalSonicPitch.py:2948
+#, python-brace-format
 msgid "Sonic pitch {pitch}"
 msgstr "Sonic pitch {pitch}"
 
+#. Translators: Input gesture description for decreasing Sonic pitch for the
+#. current synth.
+#: addon/globalPlugins/globalSonicPitch.py:2920
 msgid "Decrease Sonic pitch for the current synthesizer"
 msgstr "Znížiť Sonic pitch pre aktuálny syntetizér"
 
+#. Translators: Input gesture description for resetting Sonic pitch for the
+#. current synth.
+#: addon/globalPlugins/globalSonicPitch.py:2936
 msgid "Reset Sonic pitch for the current synthesizer"
 msgstr "Obnoviť Sonic pitch pre aktuálny syntetizér"
 
+#: addon/installTasks.py:34
 msgid ""
 "If you like Sonic Pitch and want to support my work, you can buy me a coffee.\n"
 "\n"
@@ -92,5 +179,25 @@ msgstr ""
 "\n"
 "Chcete teraz otvoriť stránku podpory?"
 
+#. Translators: Title of the optional support prompt.
+#. Translators: Title of the support page error.
+#: addon/installTasks.py:39 addon/installTasks.py:55
 msgid "Support Sonic Pitch"
 msgstr "Podpora Sonic Pitch"
+
+#. Translators: Diagnostic status suffix. {reason} is a technical error
+#. description.
+#: addon/globalPlugins/globalSonicPitch.py:2890
+#, python-brace-format
+msgid "Sonic unavailable: {reason}"
+msgstr "Knižnica Sonic nie je dostupná: {reason}"
+
+#: buildVars.py:12
+msgid ""
+"Lets you lower or raise the pitch of NVDA speech using Sonic, independently "
+"of the synthesizer's own pitch setting. Remembers separate settings for "
+"individual voices."
+msgstr ""
+"Umožňuje znížiť alebo zvýšiť výšku hlasu NVDA pomocou knižnice Sonic, "
+"nezávisle od nastavenia výšky syntetizéra. Zapamätá si nastavenia osobitne "
+"pre jednotlivé hlasy."

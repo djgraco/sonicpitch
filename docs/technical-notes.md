@@ -3,6 +3,32 @@
 This document records the current implementation details for Global Sonic
 Pitch. It is intended for maintainers and reviewers.
 
+## Maintenance boundaries
+
+The repository maintenance work changes build infrastructure, documentation and
+localization. It does not split the main plugin into modules or alter speech
+processing. The only main-plugin change makes an existing diagnostic status
+suffix translatable. SAPI4/SAPI5 host wrapper source and bundled DLLs are unchanged.
+
+The main plugin combines configuration, Sonic loading and processing, synth
+setting injection, dialog integration and gesture handling. SAPI host wrappers
+are already separate modules because they run in a different process. Any later
+modularization of the main plugin is a separate runtime change requiring the
+regression tests in `../TESTING.md`.
+
+The changelog documents the reasons for existing stability workarounds. Preserve:
+
+- stream replacement and deferred pitch/quality changes at safe speech boundaries;
+- SAPI audio callback locking and native stream retirement/lifetime protections;
+- short first-block buffering and delayed playback completion callbacks;
+- Voice dialog preview, commit/rollback and cleanup after the dialog is destroyed;
+- retained references to the original WavePlayer class and methods for soundWave;
+- wrapper signature compatibility and support for dynamically generated settings.
+
+These address different native lifetime, threading and NVDA integration problems.
+Moving functions to separate modules alone does not demonstrate that a workaround
+can safely be removed. Build checks do not execute these runtime paths.
+
 ## Design Goal
 
 Global Sonic Pitch provides Sonic-based pitch adjustment without changing NVDA's

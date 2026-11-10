@@ -1,100 +1,59 @@
 # Global Sonic Pitch
 
-Global Sonic Pitch to dodatek do NVDA, który dodaje osobną regulację `Sonic
-pitch` dla obsługiwanych syntezatorów. Zmienia wysokość mowy przez
-przetwarzanie Sonic, a zwykłe ustawienie NVDA `Wysokość` nadal steruje natywną
-wysokością syntezatora.
+Global Sonic Pitch pozwala obniżać i podwyższać głos NVDA za pomocą biblioteki
+dźwiękowej Sonic. Dodaje osobną regulację **Sonic pitch**, niezależną od
+ustawienia **Wysokość** w syntezatorze. Dzięki temu możesz dostosować brzmienie
+głosu bez zmieniania ustawionej szybkości mowy.
 
-## Szybki Start
+[English](README.md) | Polski | [Slovenčina](README.sk.md)
 
-1. Zainstaluj `globalSonicPitch-<wersja>.nvda-addon` z
-   [Releases](https://github.com/kazek5p-git/sonicpitch/releases/latest).
-2. Zrestartuj NVDA.
-3. Otwórz ustawienia NVDA i wybierz `Global Sonic Pitch`.
-4. Włącz `Enable global Sonic pitch`.
-5. Otwórz ustawienia głosu albo pierścień ustawień syntezatora i zmień
-   `Sonic pitch`.
+## Możliwości
 
-## Funkcje
+- Regulacja wysokości w ustawieniach głosu lub pierścieniu ustawień syntezatora.
+- Osobne ustawienia dla syntezatorów, głosów i obsługiwanych wariantów głosu.
+- Standardowy zakres od −6 do +6 półtonów oraz opcjonalny zakres od −20 do
+  +20 półtonów. W obu zakresach wartość neutralna wynosi 50.
+- Opcjonalny tryb lepszej jakości przetwarzania Sonic.
+- Możliwość przypisania własnych gestów do przełączania przetwarzania,
+  zmiany wysokości i przywracania wartości neutralnej.
 
-- Dodaje panel ustawień `Global Sonic Pitch`.
-- Dodaje osobne ustawienie `Sonic pitch`, gdy globalne przetwarzanie jest
-  włączone.
-- Zostawia zwykłą `Wysokość` NVDA jako natywną wysokość syntezatora.
-- Zapisuje `Sonic pitch` osobno dla każdego obsługiwanego syntezatora i
-  wybranego głosu.
-- Udostępnia opcjonalny rozszerzony zakres około `-20..+20` półtonów.
-- Udostępnia opcjonalne przetwarzanie Sonic w lepszej jakości. Tryb szybki pozostaje
-  domyślny.
-- Obsługuje audio syntezatorów działających w głównym procesie NVDA oraz
-  standardowe `sapi5_32` / `sapi4_32` na 64-bitowym NVDA przez dołączone
-  wrappery hosta 32-bitowego.
-- Zawiera dołączone natywne biblioteki Sonic 32-bit i 64-bit.
-- Zawiera pomoc dodatku po angielsku, polsku i słowacku.
-- Zawiera polskie i słowackie tłumaczenie interfejsu.
+Dodatek obsługuje m.in. eSpeak NG, OneCore, RHVoice oraz obsługiwane
+konfiguracje SAPI. Zgodność zależy od sposobu przekazywania dźwięku przez
+syntezator; szczegóły znajdziesz w [instrukcji](addon/doc/pl/readme.md).
 
-## Dokumentacja
+## Instalacja i pierwsze uruchomienie
 
-- Pełna pomoc angielska: [addon/doc/en/readme.html](addon/doc/en/readme.html)
-- Pomoc polska: [addon/doc/pl/readme.html](addon/doc/pl/readme.html)
-- Pomoc słowacka: [addon/doc/sk/readme.html](addon/doc/sk/readme.html)
-- Notatki techniczne: [docs/technical-notes.md](docs/technical-notes.md)
-- Lista testów ręcznych: [TESTING.md](TESTING.md)
-- Szablon tłumaczeń: [addon/locale/nvda.pot](addon/locale/nvda.pot)
+Zainstaluj **Global Sonic Pitch** ze sklepu dodatków NVDA albo pobierz plik
+`globalSonicPitch-<wersja>.nvda-addon` z [wydań projektu](https://github.com/djgraco/sonicpitch/releases).
+Pobrany plik zainstaluj za pomocą opcji instalowania dodatku z pliku w NVDA.
+Uruchom ponownie NVDA, gdy pojawi się odpowiedni komunikat.
 
-## Zmiany
+1. Otwórz ustawienia NVDA i wybierz kategorię **Global Sonic Pitch**.
+2. Zaznacz **Włącz globalny Sonic pitch**, a następnie wybierz **OK** lub **Zastosuj**.
+3. Otwórz ustawienia **Głos** i zmień **Sonic pitch**. Wartości poniżej 50
+   obniżają głos, a wartości powyżej 50 go podwyższają.
 
-- 1.1.7: Naprawiono zgodność z soundWave, który tymczasowo zastępuje
-  `nvwave.WavePlayer` podczas renderowania dźwięku.
-- 1.1.6: Naprawia ponowne otwieranie okien ustawień NVDA po przełączeniu na
-  SAPI4 albo 32-bitowe SAPI5 w nowszych 64-bitowych wersjach NVDA.
-- 1.1.5: Poprawnie przywraca zapisaną wartość `Sonic pitch` per głos po
-  powrocie na `sapi5_32` z innego syntezatora.
-- 1.1.4: Naprawia ponowne otwieranie okien ustawień NVDA na nowszych
-  64-bitowych wersjach NVDA, gdy aktywne jest SAPI4 albo SAPI5.
-- 1.1.3: Odświeża kontrolkę `Sonic pitch` w ustawieniach głosu po zmianie
-  wariantu i poprawia kompatybilność wrappera `setSynth` z Google TTS dla NVDA
-  0.4 na starszych wersjach NVDA.
-- 1.1: Dodano opcjonalne przetwarzanie Sonic w lepszej jakości dla obsługiwanych ścieżek
-  przetwarzania. Tryb szybki pozostaje domyślny.
-- 1.0: Stabilne wydanie zastępujące wycofaną kompilację 1.0. Poprawia
-  obsługę krótkich bloków audio i wzmacnia sprzątanie okna ustawień głosu.
-- 0.4.20: Dodano opcjonalny zakres 20 półtonów i obsługę standardowego
-  `sapi4_32` przez host 32-bitowy w 64-bitowym NVDA.
-- 0.4.19: Uporządkowana dokumentacja publiczna pod recenzję w NVDA Add-on
-  Store. Bez zmian w działaniu audio.
-- 0.4.18: Dodano wartości `Sonic pitch` per głos oraz polską i słowacką
-  lokalizację.
-- 0.4.15: Ustabilizowano szybkie zmiany `Sonic pitch` dla standardowego
-  `sapi5_32` na 64-bitowym NVDA.
-- 0.4.13: Dodano obsługę standardowego `sapi5_32` na 64-bitowym NVDA przez
-  dołączony wrapper hosta.
-- 0.4.10: Dołączono natywne biblioteki Sonic dla 32-bitowego i 64-bitowego
-  NVDA.
+Przetwarzanie jest domyślnie wyłączone. Nadal korzystasz ze swojego
+dotychczasowego syntezatora; nie musisz wybierać dodatkowego syntezatora.
 
-Historia wydań jest w [CHANGELOG.md](CHANGELOG.md).
+## Dokumentacja i rozwój
 
-## Kod Źródłowy
+- [Instrukcja obsługi](addon/doc/pl/readme.md)
+- [Historia wydań](CHANGELOG.md)
+- [Budowanie i struktura repozytorium](docs/building.md) — po angielsku
+- [Wskazówki dla tłumaczy](docs/translating.md) — po angielsku
+- [Informacje techniczne](docs/technical-notes.md) — po angielsku
+- [Lista testów](TESTING.md) — po angielsku
+- [Współpraca przy projekcie](CONTRIBUTING.md) — po angielsku
 
-- Główny plugin: [addon/globalPlugins/globalSonicPitch.py](addon/globalPlugins/globalSonicPitch.py)
-- Wrapper hosta SAPI5 32-bit: [addon/sapi32HostDrivers/sapi5.py](addon/sapi32HostDrivers/sapi5.py)
-- Wrapper hosta SAPI4 32-bit: [addon/sapi32HostDrivers/sapi4.py](addon/sapi32HostDrivers/sapi4.py)
-- Notatki o dołączonej bibliotece Sonic: [addon/globalPlugins/sonicPitchNative/README.txt](addon/globalPlugins/sonicPitchNative/README.txt)
-
-## Instalacja
-
-1. Pobierz najnowszy plik `.nvda-addon` z
-   [Releases](https://github.com/kazek5p-git/sonicpitch/releases/latest).
-2. W NVDA otwórz sklep dodatków albo menedżer dodatków i wybierz instalację z
-   pliku.
-3. Wskaż pobrany pakiet dodatku.
-4. Zrestartuj NVDA po komunikacie.
-
-Stały link do najnowszego pakietu:
-[globalSonicPitch.nvda-addon](https://github.com/kazek5p-git/sonicpitch/releases/latest/download/globalSonicPitch.nvda-addon)
+Po przygotowaniu narzędzi opisanych w instrukcji budowania wykonaj
+`uv sync --locked`, a następnie `uv run scons`. Budowanie generuje pomoc HTML,
+skompilowane tłumaczenia i manifesty, po czym tworzy pakiet dodatku z numerem
+wersji w nazwie. Narzędzia są oparte na [NVDA Add-on Template](https://github.com/nvaccess/AddonTemplate).
 
 ## Licencja
 
-Global Sonic Pitch jest licencjonowany na GNU GPL w wersji 2 lub nowszej.
-Dołączone natywne biblioteki Sonic są zewnętrznymi komponentami na licencji
-Apache 2.0.
+Kod dodatku jest dostępny na licencji GNU GPL w wersji 2 lub nowszej.
+Zobacz [LICENSE.md](LICENSE.md) i [COPYING.txt](COPYING.txt).
+Dołączone biblioteki DLL Sonic są objęte licencją Apache 2.0;
+szczegóły opisano w [informacjach o komponentach zewnętrznych](THIRD_PARTY_NOTICES.md).

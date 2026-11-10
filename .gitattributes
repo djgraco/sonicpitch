@@ -1,0 +1,13 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.po text eol=lf
+*.pot text eol=lf
+*.tpl text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+sconstruct text eol=lf
+uv.lock text eol=lf
+*.dll binary
+*.mo binary
+*.nvda-addon binary

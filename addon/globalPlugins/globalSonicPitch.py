@@ -2886,7 +2886,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			# Translators: Spoken status when global Sonic pitch is disabled.
 			message = _("Global Sonic pitch off")
 		if _sonicUnavailableReason:
-			message = f"{message}. Sonic unavailable: {_sonicUnavailableReason}"
+			# Translators: Diagnostic status suffix. {reason} is a technical error description.
+			message = f"{message}. " + _("Sonic unavailable: {reason}").format(reason=_sonicUnavailableReason)
 		if ui is not None:
 			ui.message(message)
 

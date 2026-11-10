@@ -1,0 +1,22 @@
+name: Bug report
+description: Report a reproducible problem with Global Sonic Pitch.
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: NVDA version and architecture, Windows version, add-on version, synthesizer and voice.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and result
+      description: Include Sonic pitch, selected range, quality mode, expected result and actual result.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log entries
+      description: If available, attach diagnostic entries after reviewing them for private text.

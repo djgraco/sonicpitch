@@ -1,0 +1,12 @@
+[project]
+name = "global-sonic-pitch"
+version = "0.0.0"
+description = "Build and maintenance tools for the Global Sonic Pitch NVDA add-on"
+requires-python = ">=3.13,<3.14"
+dependencies = []
+
+[dependency-groups]
+dev = ["scons==4.10.1", "Markdown==3.10", "polib==1.2.0"]
+
+[tool.uv]
+package = false

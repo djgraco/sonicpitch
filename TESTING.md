@@ -1,115 +1,103 @@
-# Manual Testing
+# Testing Global Sonic Pitch
 
-This checklist focuses on the current Global Sonic Pitch add-on.
+Build checks and NVDA runtime tests cover different things. Record the actual
+environments and results; an unchecked item is not a claim of compatibility.
 
-## Core Matrix
+## Automated build checks
 
-1. NVDA 2025.1 or newer starts without Global Sonic Pitch errors.
-2. NVDA 2026.1 or newer 64-bit starts without Global Sonic Pitch errors.
-3. Global Sonic processing is disabled by default on a fresh config.
-4. The synthesizer dialog does not show add-on-provided replacement synths.
-5. The `Global Sonic Pitch` settings panel appears in NVDA Settings.
-6. With global processing disabled, `Sonic pitch` is not shown in Voice
-   settings or the synth settings ring.
-7. With global processing enabled, `Sonic pitch` appears for supported synths.
-8. NVDA's normal `Pitch` setting still controls native synth pitch.
-9. The separate `Sonic pitch` setting controls Sonic processing.
-10. `Sonic pitch` value `50` is neutral.
-11. Lower values lower speech.
-12. Higher values raise speech.
-13. With extended range disabled, the audible range is the normal range.
-14. With `Increase Sonic pitch range to 20 semitones` enabled, the same slider
-    covers the extended range and remains neutral at `50`.
-15. With better-quality Sonic processing disabled, behavior matches fast/default
-    mode.
-16. With better-quality Sonic processing enabled, pitch processing still works and
-    the slider mapping is unchanged.
-17. Different supported synthesizers keep different `Sonic pitch` values.
-18. Different voices inside the same supported synth keep different
-    `Sonic pitch` values.
-19. Switching back to a voice restores that voice's stored value.
-20. Changes made in Voice settings are previewed live.
-21. Escape or Cancel restores the previous Voice settings value.
-22. OK or Apply commits the new Voice settings value.
-23. Changes made through the synth settings ring are committed immediately.
-24. Input Gesture scripts appear in the `Global Sonic Pitch` category.
+From the repository root, run:
 
-## Synth Paths
+1. `uv sync --locked`
+2. `uv run --locked scons pot`
+3. `uv run --locked python tools/check_project.py`
+4. `uv run --locked scons`
+5. `uv run --locked python tools/check_project.py --package --write-checksum`
 
-1. RHVoice works when speech audio reaches NVDA's main audio path.
-2. eSpeak NG works in NVDA's main process.
-3. OneCore works in NVDA's main process.
-4. Standard 64-bit SAPI5 works when it uses NVDA's normal audio path.
-5. Standard `sapi5_32` works on 64-bit NVDA through the bundled host wrapper.
-6. Standard `sapi4_32` works on 64-bit NVDA through the bundled host wrapper
-   when NVDA's SAPI4 WASAPI path is active.
-7. eSpeak-NG SAPI works through SAPI5 after it is configured in its own
-   configuration tool and visible in NVDA's normal SAPI5 voice list.
-8. The add-on does not add SAPI voice-list entries.
-9. The add-on does not write SAPI registry voice tokens.
+The checks cover Python syntax, source/POT/PO consistency, translated
+placeholders, compiled catalogs, generated manifest descriptions, package paths,
+required DLLs and licenses, and basic HTML heading/table structure.
 
-## Stress Tests
+Check build integration after changing build tools:
 
-1. Change `Sonic pitch` rapidly with PageUp/PageDown in Voice settings.
-2. Repeat rapid downward changes while SAPI5 is speaking.
-3. Repeat rapid downward changes with eSpeak-NG SAPI at high rate.
-4. On 64-bit NVDA, repeat rapid changes with standard `sapi5_32`.
-5. On 64-bit NVDA, repeat rapid changes with standard `sapi4_32`.
-6. Repeat the same stress with better-quality Sonic processing disabled and
-   enabled.
-7. Confirm speech continues and NVDA does not freeze.
-8. Confirm the 32-bit host log does not show access violations.
-9. Confirm the next utterance uses the latest selected `Sonic pitch`.
-10. Confirm say-all or continuous reading does not obviously regress.
+- Build from a clean checkout without pre-generated HTML, MO or manifests.
+- Change a manual and confirm its HTML and the package rebuild.
+- Change a PO entry and confirm the MO and translated manifest rebuild.
+- Confirm a native asset or notice change rebuilds the package.
+- Run `uv run --locked scons -c` and confirm source manuals remain intact.
+- Rebuild and validate the package again.
 
-## Localization
+## Windows and NVDA runtime matrix
 
-1. English add-on help opens.
-2. Polish add-on help opens.
-3. Slovak add-on help opens.
-4. Polish interface strings load in a Polish NVDA locale.
-5. Slovak interface strings load in a Slovak NVDA locale.
-6. `addon/locale/nvda.pot` contains all UI `msgid` entries from the shipped
-   `.po` files.
+Test the minimum declared NVDA version and the latest declared tested version,
+using the relevant 32-bit and 64-bit NVDA builds. Add future compatibility
+versions only after actual testing.
 
-## Support Prompt
+Record at least the NVDA version and architecture, Windows version,
+synthesizer and voice, add-on package checksum, settings and observed result.
 
-1. During install or update, the optional support prompt appears outside NVDA
-   minimal mode.
-2. Choosing `No` continues installation.
-3. Choosing `Yes` opens `https://buycoffee.to/kazimierz-parzych` in the default
-   browser.
-4. The settings panel `Support the author` button opens the same page.
-5. The `Open support page` Input Gesture command opens the same page.
+Speech paths to cover:
 
-## Logs
+- eSpeak NG, OneCore and RHVoice through NVDA's main audio output.
+- SAPI5 in the main process, including an affected third-party SAPI voice if available.
+- Standard `sapi5_32` on 64-bit NVDA.
+- Standard `sapi4_32` on 64-bit NVDA with WASAPI enabled.
+- The older SAPI4 audio path: confirm the documented unsupported behavior.
 
-Expected useful entries when debug logging is enabled:
+## Basic behavior
 
-- `globalSonicPitch: installed WavePlayer speech feed hook`
-- `globalSonicPitch: installed synth Sonic pitch setting hook`
-- `globalSonicPitch: added Sonic pitch voice setting`
-- `globalSonicPitch: captured Sonic pitch setting`
-- `globalSonicPitch: processed speech audio`
-- `globalSonicPitch: applied remote 32-bit Sonic pitch`
-- `globalSonicPitch sapi5_32 host: set Sonic pitch`
-- `globalSonicPitch sapi4_32 host: processed SAPI4 audio`
+- A fresh configuration has processing, extended range and higher quality disabled.
+- The settings panel appears. No replacement synthesizer entries are added.
+- Sonic pitch appears in Voice settings and the synth settings ring only when enabled.
+- 50 is neutral; smaller values lower the voice and larger values raise it.
+- The native Pitch control remains independent.
+- Standard and extended ranges have the documented effect; changing the range
+  changes the effect of saved non-neutral values.
+- Higher-quality mode preserves pitch mapping and speech remains audible.
+- Distinct synthesizers, voices and supported variants retain their values.
+- Returning to a voice or variant restores the expected value.
+- Saving and restarting NVDA restores the expected settings.
+- Changes in Voice settings can be previewed; OK/Apply saves them and Cancel/Escape
+  discards changes since the last save, including changes across voice variants.
+- Ring and assigned-gesture changes are saved immediately.
+- All six Input Gestures commands appear; none is assigned by default.
+- Non-speech NVDA sounds and audio from other applications remain unaffected.
 
-## Packaging
+## Regression checks
 
-Zip the contents of the `addon` directory, not the outer project directory, and
-use the `.nvda-addon` extension.
+Preserve the cases behind the changelog, especially:
 
-Expected package name for version 1.1:
+- Rapid PageUp/PageDown changes while speaking, including downward changes
+  with SAPI voices at high rate.
+- Both quality modes and both pitch ranges on affected host paths.
+- Interrupting speech, short first audio blocks, continuous reading and say-all.
+- Switching away from `sapi5_32` and back restores its saved per-voice value.
+- Repeatedly opening, saving, cancelling and reopening Voice settings after
+  SAPI4/SAPI5 switches.
+- Switching only a voice variant refreshes the visible control and preserves
+  independent pending/saved values.
+- Dynamic voice settings, including Google TTS if installed, retain their
+  original behavior alongside Sonic pitch.
+- soundWave rendering while it temporarily replaces `nvwave.WavePlayer`.
+- Disable/unload/reload behavior restores runtime hooks and leaves speech working.
+- No freeze, unexpected silence, access violation or Global Sonic Pitch traceback.
 
-```text
-globalSonicPitch-1.1.nvda-addon
-```
+These tests are needed for runtime refactoring as well as NVDA compatibility changes.
 
-Before release:
+## Localization and help
 
-1. Confirm `addon/manifest.ini` has the release version.
-2. Confirm the package contains English, Polish, and Slovak help.
-3. Confirm the package contains Polish and Slovak locale files.
-4. Confirm the package does not contain `__pycache__`.
-5. Confirm SHA256 is recorded in release notes and store submission notes.
+- English, Polish and Slovak help opens from NVDA.
+- Heading and table navigation works with a screen reader.
+- Labels in the manuals match the actual translated controls.
+- Manifest descriptions explain the purpose of the add-on.
+- Polish Input Gestures descriptions describe the command's action.
+- Support controls open the intended page only after activation.
+- The installation/update support prompt permits continuing without support.
+
+## Reporting failures
+
+Use the add-on's debug logging and collect relevant NVDA or 32-bit host log
+entries. Include reproduction steps and actual environment details. Review
+logs for private text before sharing.
+
+See [technical notes](docs/technical-notes.md) for implementation details and
+[release guidance](docs/addon-store-submission.md) before publishing a package.

@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased
+
+- Introduces a build based on NVDA Add-on Template with locked Python tooling,
+  automatic Markdown-to-HTML help, PO-to-MO compilation and manifest generation.
+- Rewrites English, Polish and Slovak overviews and manuals around setup and
+  speech pitch adjustment, with matching interface labels and pitch-range examples.
+- Replaces the vague manifest description and generates its translations from PO.
+- Adds source, translation and package checks and a read-only GitHub Actions
+  workflow that provides build artifacts without publishing releases.
+- Uses the current repository URL and versioned package names in maintained documentation.
+- Corrects Polish Input Gestures descriptions and localizes the Sonic-unavailable
+  status suffix. Existing SAPI wrappers and speech-processing logic are unchanged.
+- Keeps the current version and NVDA compatibility declaration pending a separately
+  tested future release; this entry does not announce a new release.
+
 ## 1.1.8
 
 - Replaces the locally compiled bundled Sonic DLLs with unmodified binaries

@@ -1,5 +1,9 @@
 # Local NVDA Inspection
 
+Archived historical inspection. This describes one local setup and does not
+establish the current release's tested compatibility. See `buildVars.py` for
+the compatibility declaration and `../technical-notes.md` for maintained notes.
+
 Inspection was performed on this machine from `C:\Program Files\NVDA`.
 
 - Installed NVDA version data observed during local testing: `2026.2beta6`,

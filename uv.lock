@@ -1,0 +1,51 @@
+version = 1
+revision = 5
+requires-python = "==3.13.*"
+
+[[package]]
+name = "global-sonic-pitch"
+version = "0.0.0"
+source = { virtual = "." }
+
+[package.dev-dependencies]
+dev = [
+    { name = "markdown" },
+    { name = "polib" },
+    { name = "scons" },
+]
+
+[package.metadata]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "markdown", specifier = "==3.10" },
+    { name = "polib", specifier = "==1.2.0" },
+    { name = "scons", specifier = "==4.10.1" },
+]
+
+[[package]]
+name = "markdown"
+version = "3.10"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/7d/ab/7dd27d9d863b3376fcf23a5a13cb5d024aed1db46f963f1b5735ae43b3be/markdown-3.10.tar.gz", hash = "sha256:37062d4f2aa4b2b6b32aefb80faa300f82cc790cb949a35b8caede34f2b68c0e", size = 364931, upload-time = "2025-11-03T19:51:15.007Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/70/81/54e3ce63502cd085a0c556652a4e1b919c45a446bd1e5300e10c44c8c521/markdown-3.10-py3-none-any.whl", hash = "sha256:b5b99d6951e2e4948d939255596523444c0e677c669700b1d17aa4a8a464cb7c", size = 107678, upload-time = "2025-11-03T19:51:13.887Z" },
+]
+
+[[package]]
+name = "polib"
+version = "1.2.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/10/9a/79b1067d27e38ddf84fe7da6ec516f1743f31f752c6122193e7bce38bdbf/polib-1.2.0.tar.gz", hash = "sha256:f3ef94aefed6e183e342a8a269ae1fc4742ba193186ad76f175938621dbfc26b", size = 161658, upload-time = "2023-02-23T17:53:56.873Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6b/99/45bb1f9926efe370c6dbe324741c749658e44cb060124f28dad201202274/polib-1.2.0-py2.py3-none-any.whl", hash = "sha256:1c77ee1b81feb31df9bca258cbc58db1bbb32d10214b173882452c73af06d62d", size = 20634, upload-time = "2023-02-23T17:53:59.919Z" },
+]
+
+[[package]]
+name = "scons"
+version = "4.10.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/7d/c9/2f430bb39e4eccba32ce8008df4a3206df651276422204e177a09e12b30b/scons-4.10.1.tar.gz", hash = "sha256:99c0e94a42a2c1182fa6859b0be697953db07ba936ecc9817ae0d218ced20b15", size = 3258403, upload-time = "2025-11-16T22:43:39.258Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ce/bf/931fb9fbb87234c32b8b1b1c15fba23472a10777c12043336675633809a7/scons-4.10.1-py3-none-any.whl", hash = "sha256:bd9d1c52f908d874eba92a8c0c0a8dcf2ed9f3b88ab956d0fce1da479c4e7126", size = 4136069, upload-time = "2025-11-16T22:43:35.933Z" },
+]

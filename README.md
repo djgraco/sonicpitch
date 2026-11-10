@@ -1,93 +1,57 @@
 # Global Sonic Pitch
 
-Global Sonic Pitch is an NVDA add-on that adds a separate `Sonic pitch` control
-to supported synthesizers. It changes speech pitch through Sonic audio
-processing while leaving NVDA's normal native `Pitch` setting unchanged.
+Global Sonic Pitch lets you lower or raise the pitch of NVDA speech using the
+Sonic audio library. It adds a separate **Sonic pitch** control, independent of
+the synthesizer's own **Pitch** setting, so you can adjust the sound of a voice
+without changing the configured speech rate.
 
-## Quick Start
-
-1. Install `globalSonicPitch-<version>.nvda-addon` from
-   [Releases](https://github.com/kazek5p-git/sonicpitch/releases/latest).
-2. Restart NVDA.
-3. Open NVDA Settings and choose `Global Sonic Pitch`.
-4. Enable `Enable global Sonic pitch`.
-5. Open Voice settings or the synth settings ring and adjust `Sonic pitch`.
+English | [Polski](README.pl.md) | [Slovenčina](README.sk.md)
 
 ## Features
 
-- Adds a `Global Sonic Pitch` settings panel.
-- Adds a separate `Sonic pitch` setting while global processing is enabled.
-- Keeps NVDA's normal `Pitch` setting as the synthesizer's native pitch.
-- Stores `Sonic pitch` separately for each supported synthesizer and selected
-  voice.
-- Provides an optional extended range of approximately `-20..+20` semitones.
-- Provides optional better-quality Sonic processing. Fast mode remains the
-  default.
-- Supports main-process NVDA synth audio and standard `sapi5_32` / `sapi4_32`
-  on 64-bit NVDA through bundled 32-bit host wrappers.
-- Includes bundled 32-bit and 64-bit Sonic native libraries.
-- Provides English, Polish, and Slovak add-on help.
-- Provides Polish and Slovak interface translations.
+- Adjust speech pitch from NVDA's Voice settings or synth settings ring.
+- Keep separate values for synthesizers, voices and supported voice variants.
+- Choose the standard range of −6 to +6 semitones or an extended range of
+  −20 to +20 semitones. The neutral value is 50 in both ranges.
+- Optionally enable higher-quality Sonic processing.
+- Assign your own gestures to toggle processing, change pitch or reset it.
 
-## Documentation
+The add-on works with supported NVDA speech output, including eSpeak NG,
+OneCore, RHVoice and supported SAPI configurations. Compatibility depends on
+how the synthesizer sends audio to NVDA; see the [user guide](addon/doc/en/readme.md).
 
-- Full English help: [addon/doc/en/readme.html](addon/doc/en/readme.html)
-- Polish help: [addon/doc/pl/readme.html](addon/doc/pl/readme.html)
-- Slovak help: [addon/doc/sk/readme.html](addon/doc/sk/readme.html)
-- Technical notes: [docs/technical-notes.md](docs/technical-notes.md)
-- Manual testing checklist: [TESTING.md](TESTING.md)
-- Translation template: [addon/locale/nvda.pot](addon/locale/nvda.pot)
+## Installation and first use
 
-## Changes
+Install **Global Sonic Pitch** from NVDA's Add-on Store, or download
+`globalSonicPitch-<version>.nvda-addon` from [Releases](https://github.com/djgraco/sonicpitch/releases).
+For a downloaded file, use NVDA's option to install an add-on from a file.
+Restart NVDA when prompted.
 
-- 1.1.7: Fixes compatibility with soundWave when it temporarily replaces
-  `nvwave.WavePlayer` during audio rendering.
-- 1.1.6: Fixes repeated opening of NVDA settings dialogs after switching to
-  SAPI4 or 32-bit SAPI5 on newer 64-bit NVDA builds.
-- 1.1.5: Restores saved per-voice `Sonic pitch` correctly when switching back
-  to `sapi5_32` after using another synthesizer.
-- 1.1.4: Fixes repeated opening of NVDA settings dialogs on newer 64-bit NVDA
-  builds when SAPI4 or SAPI5 is active.
-- 1.1.3: Refreshes the Voice settings `Sonic pitch` control after variant
-  changes and improves `setSynth` wrapper compatibility with Google TTS for
-  NVDA 0.4 on older NVDA versions.
-- 1.1: Added optional better-quality Sonic processing for supported processing
-  paths. Fast mode remains the default.
-- 1.0: Stable release replacing the withdrawn 1.0 build. Improves short audio
-  block handling and hardens Voice settings dialog cleanup.
-- 0.4.20: Added optional 20-semitone range and standard `sapi4_32` host
-  support on 64-bit NVDA.
-- 0.4.19: Cleaned and reorganized public documentation for NVDA Add-on Store
-  review. No audio behavior changes.
-- 0.4.18: Added per-voice `Sonic pitch` values and Polish/Slovak
-  localization.
-- 0.4.15: Stabilized rapid `Sonic pitch` changes for standard `sapi5_32` on
-  64-bit NVDA.
-- 0.4.13: Added support for standard `sapi5_32` on 64-bit NVDA through the
-  bundled host wrapper.
-- 0.4.10: Bundled Sonic native libraries for 32-bit and 64-bit NVDA.
+1. Open NVDA Settings and select **Global Sonic Pitch**.
+2. Select **Enable global Sonic pitch**, then choose **OK** or **Apply**.
+3. Open **Voice** settings and adjust **Sonic pitch**. Values below 50 lower
+   the voice; values above 50 raise it.
 
-See [CHANGELOG.md](CHANGELOG.md) for release history.
+Processing is disabled by default. You continue to use your existing
+synthesizer; no additional synthesizer needs to be selected.
 
-## Source Code
+## Documentation and development
 
-- Main plugin: [addon/globalPlugins/globalSonicPitch.py](addon/globalPlugins/globalSonicPitch.py)
-- 32-bit SAPI5 host wrapper: [addon/sapi32HostDrivers/sapi5.py](addon/sapi32HostDrivers/sapi5.py)
-- 32-bit SAPI4 host wrapper: [addon/sapi32HostDrivers/sapi4.py](addon/sapi32HostDrivers/sapi4.py)
-- Bundled Sonic library notes: [addon/globalPlugins/sonicPitchNative/README.txt](addon/globalPlugins/sonicPitchNative/README.txt)
+- [User guide](addon/doc/en/readme.md)
+- [Release history](CHANGELOG.md)
+- [Build and repository structure](docs/building.md)
+- [Translation guide](docs/translating.md)
+- [Technical notes](docs/technical-notes.md)
+- [Testing checklist](TESTING.md)
+- [Contributing](CONTRIBUTING.md)
 
-## Install
-
-1. Download the latest `.nvda-addon` file from
-   [Releases](https://github.com/kazek5p-git/sonicpitch/releases/latest).
-2. In NVDA, open Add-on Store or Add-on Manager and choose to install from file.
-3. Select the downloaded add-on package.
-4. Restart NVDA when prompted.
-
-Stable link to the latest package:
-[globalSonicPitch.nvda-addon](https://github.com/kazek5p-git/sonicpitch/releases/latest/download/globalSonicPitch.nvda-addon)
+To build from source, install the prerequisites described in the build guide,
+then run `uv sync --locked` and `uv run scons`. The build generates HTML help,
+compiled translations and manifests before creating the versioned add-on package.
+The build tools are based on the [NVDA Add-on Template](https://github.com/nvaccess/AddonTemplate).
 
 ## License
 
-Global Sonic Pitch is licensed under GNU GPL version 2 or later. Bundled Sonic
-native binaries are Apache 2.0 third-party components.
+The add-on source is licensed under the GNU GPL, version 2 or later. See
+[LICENSE.md](LICENSE.md) and [COPYING.txt](COPYING.txt). Bundled Sonic DLLs are
+Apache 2.0 components; see [third-party notices](THIRD_PARTY_NOTICES.md).
