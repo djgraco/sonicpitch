@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Moves the gettext template to `nvda.pot` in the repository root and updates
+  its build target, validation, CI artifact path and translation instructions.
+
 - Splits the main global plugin into modules for configuration, synth integration,
   dialogs, Sonic streams, audio hooks and the settings panel, with one shared state.
   Retains the NVDA plugin/gesture identity, existing processing behavior and all

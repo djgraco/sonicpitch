@@ -8,7 +8,7 @@ not introduce automatic synchronization with Crowdin.
 1. Set up the build tools described in [building.md](building.md).
 2. Run `uv run --locked scons pot` from the repository root.
 3. Update `addon/locale/<lang>/LC_MESSAGES/nvda.po` from
-   `addon/locale/nvda.pot`, using Poedit or `msgmerge`.
+   `nvda.pot` in the repository root, using Poedit or `msgmerge`.
 4. Translate new entries and review changed or fuzzy entries.
 5. Run `uv run --locked python tools/check_project.py`.
 6. Build with `uv run --locked scons` and validate the resulting package with

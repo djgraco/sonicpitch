@@ -46,6 +46,6 @@ jobs:
           path: |
             globalSonicPitch-*.nvda-addon
             globalSonicPitch-*.nvda-addon.sha256
-            addon/locale/nvda.pot
+            nvda.pot
           if-no-files-found: error
           retention-days: 14

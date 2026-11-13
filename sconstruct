@@ -146,7 +146,7 @@ gettextvars: dict[str, str] = {
 	"gettext_package_version": buildVars.addon_info["addon_version"],
 }
 
-pot = env.gettextPotFile("addon/locale/nvda.pot", i18nFiles, **gettextvars)
+pot = env.gettextPotFile("nvda.pot", i18nFiles, **gettextvars)
 env.Alias("pot", pot)
 env.Depends(pot, i18nFiles)
 mergePot = env.gettextMergePotFile("${addon_name}-merge.pot", i18nFiles, **gettextvars)

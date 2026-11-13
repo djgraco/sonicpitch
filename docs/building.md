@@ -47,7 +47,7 @@ after installing the prerequisites. Run the validation commands before sharing i
 | `addon/doc/<lang>/readme.md` | `addon/doc/<lang>/readme.html` |
 | `style.css` | `addon/doc/style.css` |
 | `COPYING.txt`, `THIRD_PARTY_NOTICES.md` | License notices in the package |
-| Python sources and `buildVars.py` | `addon/locale/nvda.pot`, when running `scons pot` |
+| Python sources and `buildVars.py` | `nvda.pot` in the repository root, when running `scons pot` |
 
 `README.md`, `README.pl.md` and `README.sk.md` are repository overviews.
 They do not overwrite the full manuals. Edit the Markdown and PO sources,
@@ -64,7 +64,8 @@ source of add-on identity, version, description, compatibility and package rules
 - `addon/sapi32HostDrivers/`: existing SAPI4/SAPI5 host wrappers.
 - `addon/globalPlugins/sonicPitchNative/`: unchanged native DLLs and their provenance.
 - `addon/doc/`: full user manuals in English, Polish and Slovak.
-- `addon/locale/`: gettext template and translated PO catalogs.
+- `nvda.pot`: gettext template, generated with `scons pot` and tracked by Git.
+- `addon/locale/`: translated PO catalogs and generated MO files/manifests.
 - `site_scons/`, `sconstruct`, manifest templates: build infrastructure.
 - `tools/check_project.py`: source, translation and package validation.
 - `docs/`: build, translation, technical and release guidance.
@@ -79,7 +80,7 @@ tool enables `msgfmt --check --check-format`. A small project stylesheet keeps
 text left-aligned and provides readable tables and visible keyboard focus.
 
 The project-specific `sconstruct` keeps manuals separate from the root README,
-keeps the existing POT path, tracks native assets and copies license notices.
+generates the POT in the repository root, tracks native assets and copies license notices.
 Its clean rule removes generated targets rather than the source manual directory.
 The manifest templates retain the existing NVDA metadata fields; optional empty
 changelog and update-channel fields are omitted. Crowdin synchronization and

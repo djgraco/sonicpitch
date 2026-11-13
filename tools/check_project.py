@@ -64,7 +64,7 @@ def source_checks(build: dict) -> dict[str, polib.POFile]:
                     messages.add(node.args[0].value)
     for path in [ROOT / "sconstruct", *ROOT.glob("site_scons/**/*.py"), *ROOT.glob("tools/*.py")]:
         ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
-    pot = polib.pofile(str(ROOT / "addon/locale/nvda.pot"))
+    pot = polib.pofile(str(ROOT / "nvda.pot"))
     require({entry.msgid for entry in pot if not entry.obsolete} == messages,
             "POT differs from source strings; run uv run scons pot")
     catalogs = {}
